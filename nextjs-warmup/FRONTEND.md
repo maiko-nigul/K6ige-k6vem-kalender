@@ -1,6 +1,8 @@
 # Calendar frontend
 
-The `/` page renders the calendar workspace or email sign-in/registration, using the existing cookie-based API authentication. No backend, migration, database type, or authorization code was changed.
+The `/` page renders the calendar workspace or email sign-in/registration and Google sign-in, using the existing cookie-based authentication. No backend, migration, database type, or authorization code was changed.
+
+Google sign-in uses the existing browser client from `lib/supabase/client.ts` and redirects to the existing `/api/auth/callback` code-exchange handler. Enable the Google provider in Supabase Auth, configure its Google OAuth client credentials, and allow the app’s full callback URL (for example, `http://localhost:3000/api/auth/callback`) in Supabase’s redirect URL list. Google’s authorized redirect URI is the Supabase project callback URL shown in its provider settings. See [Supabase’s Google sign-in setup](https://supabase.com/docs/guides/auth/social-login/auth-google). Google secrets belong in the provider settings, not in public frontend environment variables.
 
 ## Verified capability mapping
 
