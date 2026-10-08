@@ -15,6 +15,7 @@ import {
 import { api } from "./api-client";
 import { addDays, dayKey, localInput } from "./calendar-utils";
 import Dialog from "./dialog";
+import GoogleLoginButton from "./google-login-button";
 
 function message(error: unknown) {
   return error instanceof Error
@@ -98,6 +99,14 @@ export function Auth({ onSuccess }: { onSuccess: () => void }) {
               : "Sign in to find your day, all in one place."}
           </p>
           <fieldset disabled={busy}>
+            <GoogleLoginButton
+              disabled={busy}
+              onPendingChange={setBusy}
+              onError={setError}
+            />
+            <div className="auth-divider" aria-hidden="true">
+              või e-postiga
+            </div>
             {signup && (
               <label>
                 Full name

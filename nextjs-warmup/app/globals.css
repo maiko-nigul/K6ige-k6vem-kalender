@@ -1016,6 +1016,40 @@ label {
 .auth-card .primary {
   padding: 13px;
 }
+.google-login-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: #fff;
+  color: #30343b;
+  border-color: #d8dbe0;
+  font-weight: 550;
+  box-shadow: 0 2px 6px #0002;
+}
+.google-login-button:hover {
+  background: #f3f4f6;
+  border-color: #c3c7cf;
+}
+.google-login-button svg {
+  flex-shrink: 0;
+}
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 11px;
+  margin: 22px 0;
+}
+.auth-divider::before,
+.auth-divider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: var(--border);
+}
 .auth-card .auth-switch {
   margin: 24px 0 0;
   text-align: center;
