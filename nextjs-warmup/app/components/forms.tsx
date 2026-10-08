@@ -17,6 +17,19 @@ import { addDays, dayKey, localInput } from "./calendar-utils";
 import Dialog from "./dialog";
 import GoogleLoginButton from "./google-login-button";
 
+const eventColors = [
+  { value: "#3b82f6", label: "Blue" },
+  { value: "#a78bfa", label: "Violet" },
+  { value: "#c084fc", label: "Purple" },
+  { value: "#72cba7", label: "Green" },
+  { value: "#5cc9cb", label: "Teal" },
+  { value: "#f08ba8", label: "Pink" },
+  { value: "#ef8888", label: "Red" },
+  { value: "#eba471", label: "Orange" },
+  { value: "#e5bc6b", label: "Yellow" },
+  { value: "#94a3b8", label: "Slate" },
+];
+
 function message(error: unknown) {
   return error instanceof Error
     ? error.message
@@ -327,12 +340,20 @@ export function EventForm({
             </label>
             <label>
               Event color
-              <input
-                name="color"
-                defaultValue={event?.color ?? ""}
-                placeholder="Inherit category color"
-                pattern="(#([0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})|[a-z]+(-[a-z0-9]+)*)"
-              />
+              <select name="color" defaultValue={event?.color ?? ""}>
+                <option value="">Inherit category color</option>
+                {eventColors.map((color) => (
+                  <option key={color.value} value={color.value}>
+                    {color.label}
+                  </option>
+                ))}
+                {event?.color &&
+                  !eventColors.some((color) => color.value === event.color) && (
+                    <option value={event.color}>
+                      Current color ({event.color})
+                    </option>
+                  )}
+              </select>
             </label>
           </div>
           <label>
