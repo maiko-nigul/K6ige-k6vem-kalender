@@ -2,7 +2,7 @@
 
 ## Seadistamine
 
-1. Kopeeri `.env.example` → `.env.local` ja täida Supabase'i URL ning anon key.
+1. Loo fail `.env.local`, kuhu lähevad `NEXT_PUBLIC_SUPABASE_URL` ja `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
 2. Käivita `supabase/migrations/20261008000000_calendar_schema.sql` Supabase Dashboard → **SQL Editor**.
    See loob puuduvad tabelid (`profiles`, `categories`), lisab `events.category_id`, RLS-i, indeksid ja triggerid.
    Faili võib turvaliselt mitu korda käivitada.
